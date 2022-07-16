@@ -1,0 +1,289 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+.particulesLayer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    height: 100vh;
+    width: 100vw;
+    gap: 12%;
+    background: #002;
+}
+
+h1 {
+    color: #FFF;
+    font-family: 'Poppins';
+    font-size: 5em;
+    position: absolute;
+    top: 10%;
+}
+
+.workListDiv {
+    width: 80vw;
+    height: 12em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 5px #FFF;
+    position: relative;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.tareaDescription {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.tareaDescription::before {
+    content: attr(data-id);
+    position: absolute;
+    color: #FFF;
+    font-size: 1.3em;
+    width: 2em;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -20%;
+}
+
+.tareaDiv {
+    width: 100%;
+    color: #FFF;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    transition: all .5s;
+}
+
+i {
+    transition: all .5s;
+}
+
+.fa-check {
+    --colorCheck: #FFF;
+    position: absolute;
+    top: 10%;
+    color: var(--colorCheck);
+    cursor: pointer;
+    
+}
+
+.fa-check:hover {
+    text-shadow: 0 0 5px var(--colorCheck), 0 0 25px var(--colorCheck), 0 0 50px #FFF, 0 0 100px #FFF;
+    transform: scale(1.1);
+}
+
+.fa-check:active, .fa-xmark:active {
+    transform: scale(1.5);
+}
+
+
+
+.fa-xmark:hover {
+    cursor: pointer;
+    text-shadow: 0 0 5px #F12, 0 0 25px #F12, 0 0 50px #FFF, 0 0 100px #F12;
+    transform: scale(1.1);
+    color: #F12;
+
+}
+
+.cantidades {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    height: 5em;
+    left: 10%;
+    top: 57%;
+    color: #FFF;
+}
+
+.realizadas {
+    position: absolute;
+    top: 30%;
+}
+
+.form {
+    margin-top: 18%;
+    display: flex;
+    height: 10vh;
+    width: 80vw;
+    justify-content: space-evenly;
+
+}
+
+input {
+    position: relative;
+    z-index: 2;
+    width: 35vw;
+    height: 3em;
+    outline: none;
+    border: 2px solid #FFF;
+    background: transparent;
+    border-radius: 20px;
+    text-align: center;
+    color: #FFF;
+    transition: .5s;
+    font-size: 1.1em;
+}
+
+.boton {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    outline: none;
+    border: 2px solid #FFF;
+    color: #FFF;
+    height: 4em;
+    width: 12em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .1s linear .1s;
+    letter-spacing: 2px;
+}
+
+
+.boton:hover {
+    box-shadow: 0 0 3px #FFF inset;
+}
+
+
+.boton::before {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, .1);
+    width: 5%;
+    top: -5%;
+    left: -100%;
+    height: 200%;
+    transition: all .5s ease-in;
+    transform: rotateZ(25deg);
+}
+
+.boton::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, .1);
+    width: 10%;
+    top: -5%;
+    left: -90%;
+    height: 100%;
+    transition: all .5s linear;
+    transform: rotateZ(25deg);
+}
+
+
+.boton:hover::after {
+    left: 150%;  
+}
+
+#landscape {
+    display: none;
+    z-index: -100;
+}
+
+@media (max-width: 1100px) {
+    .cantidades {
+        top: 90%
+    }
+}
+
+@media (max-width: 750px) and (orientation: landscape){
+    #landscape {
+        display: flex;
+        position: fixed;
+        top: 0;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        background: #f2f2f2;
+        z-index: 5;
+        width: 100%;
+        height: 100vh;
+        font-size: 120%;
+        align-items: center;
+        justify-content: center;
+    }
+    }
+
+@media(max-width: 750px){
+    .p {
+        position: absolute;
+        left: 0;
+    }
+
+    .tareaDescription::before {
+        font-size: 1.1em;
+    }
+
+    .fa-check {
+        position: absolute;
+        left: 60%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .form {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    input {
+        width: 60vw;
+    }
+
+    .boton {
+        position: absolute;
+        top: 110%;
+        width: 7em;
+        height: 3em;
+    }
+}
+
+@media(max-width: 550px) {
+
+    h1 {
+        font-size: 3.5em;
+    }
+
+    .p {
+        position: absolute;
+        left: 10%;
+    }
+
+    .fa-check {
+        left: 70%;
+    }
+
+    input {
+        width: 80vw;
+    }
+}
